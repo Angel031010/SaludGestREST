@@ -1,0 +1,21 @@
+﻿using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SaludGestREST.Services.DTOs
+{
+    public class PacienteCreateDTO : RegistryDTO
+    {
+        public int PacienteId { get; set; }
+        public string Nombre { get; set; }
+        public string ApPaterno { get; set; }
+        public string ApMaterno { get; set; }
+        public DateTime FechaNacimiento { get; set; }
+        public decimal Telefono { get; set; }
+        public IFormFile File { get; set; }
+        public string Email { get; set; }
+    }
+}
