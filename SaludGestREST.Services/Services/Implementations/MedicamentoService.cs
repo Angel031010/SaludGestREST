@@ -12,7 +12,7 @@ using SaludGestREST.Services.Constants;
 
 namespace SaludGestREST.Services.Services.Implementations
 {
-    internal class MedicamentoService : IMedicamentoService
+    public class MedicamentoService : IMedicamentoService
     {
         private readonly ApplicationDbContext _context;
         public MedicamentoService(ApplicationDbContext context)

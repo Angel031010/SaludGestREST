@@ -60,5 +60,6 @@ namespace SaludGestREST.Data
             );
         }
         public DbSet<Medicamento> Medicamentos { get; set; }
+        public DbSet<Paciente> Pacientes { get; set; }
     }
 }
