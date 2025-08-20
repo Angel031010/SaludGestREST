@@ -15,6 +15,7 @@ namespace SaludGestREST.Data
         public DbSet<Medicamento> Medicamentos { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Especialidad> Especialidades { get; set; }
+        public DbSet<InventarioMedicamento> InventarioMedico { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -60,37 +61,77 @@ namespace SaludGestREST.Data
                     HighSystem = DateTime.Now
                 }
             );
-            modelBuilder.Entity<Especialidad>().HasData(
-                new Especialidad
+            modelBuilder.Entity<Medicamento>().HasData(
+                new Medicamento
                 {
-                    IdEspecialidad = 1,
-                    Nombre = "Medicina Interna",
-                    Descripcion = "Cardiología: Corazón y sistema circulatorio. Endocrinología: Enfermedades hormonales y del metabolismo (ej. diabetes, tiroides). Gastroenterología: Sistema digestivo (estómago, intestinos, hígado). Neumología: Pulmones y sistema respiratorio. Nefrología: Riñones. Reumatología: Enfermedades del sistema musculoesquelético y autoinmunes (ej. artritis).",
-                    IsActive = true,
-                    HighSystem = DateTime.Now
+                    MedicamentoId = 1,
+                    Nombre = "Rosel",
+                    Lote = "1234457",
+                    Codigo = "234r324",
+                    Sustancia = "Paracetamol"
                 },
-                new Especialidad
+                new Medicamento
                 {
-                    IdEspecialidad = 2,
-                    Nombre = "Pediatria",
-                    Descripcion = "Cuidado de la salud de bebés, niños y adolescentes.",
-                    IsActive = true,
-                    HighSystem = DateTime.Now
-                }, new Especialidad
+                    MedicamentoId = 2,
+                    Nombre = "Neomelubrina",
+                    Lote = "12344",
+                    Codigo = "23324",
+                    Sustancia = "Parace"
+                }
+                );
+            modelBuilder.Entity<Paciente>().HasData(
+                new Paciente
                 {
-                    IdEspecialidad = 3,
-                    Nombre = "Medicina Familiar y General",
-                    Descripcion = "Ofrece atención médica integral y continua para personas de todas las edades. Son el primer punto de contacto del sistema de salud.",
-                    IsActive = true,
-                    HighSystem = DateTime.Now
-                }, new Especialidad
+                    PacienteId = 1,
+                    Nombre = "Sergio",
+                    ApPaterno = "Hernandez",
+                    ApMaterno = "Velasco",
+                    Telefono = 557511785,
+                    UrlFoto = "/default.jpg",
+                    Email = "ejemplo@test.com",
+                    FechaNacimiento = DateTime.Now.AddYears(-36)
+                },
+                new Paciente
                 {
-                    IdEspecialidad = 4,
-                    Nombre = "Geriatría",
-                    Descripcion = "Cuidado de la salud en personas de la tercera edad.",
-                    IsActive = true,
-                    HighSystem = DateTime.Now
-                });
+                    PacienteId = 2,
+                    Nombre = "Angel",
+                    ApPaterno = "Ildefonso",
+                    ApMaterno = "Sanchez",
+                    Telefono = 557486785,
+                    UrlFoto = "/default.jpg",
+                    Email = "ejemplo@test.com",
+                    FechaNacimiento = DateTime.Now.AddYears(-22)
+                },
+                new Paciente
+                {
+                    PacienteId = 3,
+                    Nombre = "Roberto",
+                    ApPaterno = "Sapiens",
+                    ApMaterno = "Castillo",
+                    Telefono = 5632111785,
+                    UrlFoto = "/default.jpg",
+                    Email = "ejemplo@test.com",
+                    FechaNacimiento = DateTime.Now.AddYears(-24)
+                }
+                );
+            modelBuilder.Entity<InventarioMedicamento>().HasData(
+                new InventarioMedicamento
+                {
+                    InventarioMedId = 1,
+                    CentroId = 1,
+                    MedicamentoId = 1,
+                    Cantidad = 10,
+                    Minimo = 5
+                },
+                new InventarioMedicamento
+                {
+                    InventarioMedId = 2,
+                    CentroId = 2,
+                    MedicamentoId = 2,
+                    Cantidad = 10,
+                    Minimo = 5
+                }
+                );
         }
     }
 }

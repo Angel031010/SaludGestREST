@@ -1,33 +1,31 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SaludGestREST.Data;
 using SaludGestREST.Services.Constants;
 using SaludGestREST.Services.DTOs;
 using SaludGestREST.Services.Services.Interfaces;
 
 namespace SaludGestREST.web.Controllers
 {
-    [Route("medicamento")]
+    [Route("inventario")]
     [ApiController]
-    public class MedicamentoController : ControllerBase
+    public class InventarioController : ControllerBase
     {
-
-        private readonly IMedicamentoService _serviceMedicamento;
-        public MedicamentoController(IMedicamentoService service)
+        private readonly IInventarioService _inventarioService;
+        public InventarioController(IInventarioService service)
         {
-            _serviceMedicamento = service;
+            _inventarioService = service;
         }
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             try
             {
-                var medicamentos = await _serviceMedicamento.GetAllAsync();
+                var medicamentos = await _inventarioService.GetAllAsync();
                 return Ok(medicamentos);
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = Messages.Error.MedicamentoNotFound });
+                return BadRequest(new { message = Messages.Error.InventariosNotFound });
             }
         }
         [HttpGet("{id}")]
@@ -35,38 +33,38 @@ namespace SaludGestREST.web.Controllers
         {
             try
             {
-                var medicamento = await _serviceMedicamento.GetByIdAsync(id);
+                var medicamento = await _inventarioService.GetByIdAsync(id);
                 return Ok(medicamento);
             }
             catch
             {
-                return BadRequest(new { message = Messages.Error.MedicamentoNotFoundWithId });
+                return BadRequest(new { message = Messages.Error.InventarioNotFoundWithId });
             }
         }
         [HttpPost]
-        public async Task<IActionResult> Crear([FromBody] MedicamentoDTO medicamentoDTO)
+        public async Task<IActionResult> Crear([FromBody] InventarioDTO medicamentoDTO)
         {
             try
             {
-                await _serviceMedicamento.AddAsync(medicamentoDTO);
+                await _inventarioService.AddAsync(medicamentoDTO);
                 return Ok();
             }
             catch
             {
-                return BadRequest(new { mesage = Messages.Error.MedicamentoCreateError });
+                return BadRequest(new { mesage = Messages.Error.InventarioCreateError });
             }
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> Actualizar(int id, [FromBody] MedicamentoDTO medicamentoDTO)
+        public async Task<IActionResult> Actualizar(int id, [FromBody] InventarioDTO medicamentoDTO)
         {
             try
             {
-                await _serviceMedicamento.UpdateAsync(id, medicamentoDTO);
+                await _inventarioService.UpdateAsync(id, medicamentoDTO);
                 return Ok();
             }
             catch
             {
-                return BadRequest(new { mesage = Messages.Error.MedicamentoUpdateError });
+                return BadRequest(new { mesage = Messages.Error.InventarioUpdateError });
             }
         }
         [HttpDelete("{id}")]
@@ -74,12 +72,12 @@ namespace SaludGestREST.web.Controllers
         {
             try
             {
-                await _serviceMedicamento.DeleteAsync(id);
+                await _inventarioService.DeleteAsync(id);
                 return Ok();
             }
             catch
             {
-                return BadRequest(new { mesage = Messages.Error.MedicamentoDeleteError });
+                return BadRequest(new { mesage = Messages.Error.InventarioDeleteError });
             }
         }
     }

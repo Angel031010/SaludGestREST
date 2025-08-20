@@ -31,10 +31,12 @@ namespace SaludGestREST.Services.Constants
             // Búsqueda/Existencia
             public const string ProductNotFoundWithId = "Producto con ID {0} no encontrado";
             public const string MedicamentoNotFoundWithId = "Medicamento con ID no encontrado";
+            public const string InventarioNotFoundWithId = "Inventario con ID no encontrado";
             public const string PacienteNotFoundWithId = "Paciente con ID no encontrado";
             public const string CentroMedicoNotFoundWithId = "Centro Medico con ID no encontrado";
             public const string CentroMedicoNotFound = "Cemtrp Médico no encontrado";
             public const string MedicamentoNotFound = "Medicamentos no encontrados";
+            public const string InventariosNotFound = "Inventarios no encontrados";
             public const string PacienteNotFound = "Pacientes no encontrados";
             public const string BrandNotFound = "Marca no encontrada";
             public const string CategoryNotFound = "Categoría no encontrada";
@@ -42,12 +44,14 @@ namespace SaludGestREST.Services.Constants
             // Creación
             public const string ProductCreateError = "Hubo un error al agregar el producto";
             public const string MedicamentoCreateError = "Hubo un error al agregar el medicamento";
+            public const string InventarioCreateError = "Hubo un error al agregar el inventario";
             public const string PcienteCreateError = "Hubo un error al agregar el paciente";
             public const string CentroMedicoCreateError = "Hubo un error al agregar el Centro Médico";
 
             // Actualización
             public const string ProductUpdateError = "Error al actualizar el producto";
             public const string MedicamentoUpdateError = "Error al actualizar el medicamento";
+            public const string InventarioUpdateError = "Error al actualizar el inventario";
             public const string PacienteUpdateError = "Error al actualizar el paciente";
             public const string BrandUpdateError = "Error al actualizar la marca";
             public const string CategoryUpdateError = "Error al actualizar la categoría";
@@ -56,6 +60,7 @@ namespace SaludGestREST.Services.Constants
             // Eliminación
             public const string ProductDeleteError = "Error al eliminar el producto";
             public const string MedicamentoDeleteError = "Error al eliminar el medicamento";
+            public const string InventarioDeleteError = "Error al eliminar el inventario";
             public const string PacienteDeleteError = "Error al eliminar el paciente";
             public const string BrandDeleteError = "Error al eliminar la marca";
             public const string CategoryDeleteError = "Error al eliminar la categoría";
