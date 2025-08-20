@@ -9,6 +9,16 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Agregar servicios CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp",
+        builder => builder
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -30,6 +40,10 @@ builder.Services.Configure<UploadSettings>(builder.Configuration.GetSection("Upl
 //builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 #endregion
 var app = builder.Build();
+
+// Usar CORS
+app.UseCors("AllowAngularApp");
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
