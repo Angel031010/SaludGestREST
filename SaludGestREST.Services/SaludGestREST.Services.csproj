@@ -7,8 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Constants\" />
-    <Folder Include="DTOs\" />
     <Folder Include="Services\Implementations\" />
     <Folder Include="Services\Interfaces\" />
   </ItemGroup>
