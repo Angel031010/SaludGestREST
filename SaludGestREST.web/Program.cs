@@ -60,7 +60,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 //Configurar Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+    .AddDefaultTokenProviders()
+    .AddRoles<IdentityRole>();
 //Recuperamos SecretKey
 var secretKey = Encoding.ASCII.GetBytes(
     builder.Configuration.GetValue<string>("JwtSettings:SecretKey"));
