@@ -9,7 +9,7 @@ namespace SaludGestREST.web.Controllers
 {
     [Route("inventario")]
     [ApiController]
-    [Authorize("Medico")]
+    [Authorize(Roles = "Medico")]
     public class InventarioController : ControllerBase
     {
         private readonly IInventarioService _inventarioService;
@@ -51,7 +51,7 @@ namespace SaludGestREST.web.Controllers
                 await _inventarioService.AddAsync(medicamentoDTO);
                 return Ok();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(new { mesage = Messages.Error.InventarioCreateError });
             }

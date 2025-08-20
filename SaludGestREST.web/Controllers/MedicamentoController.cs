@@ -10,7 +10,7 @@ namespace SaludGestREST.web.Controllers
 {
     [Route("medicamento")]
     [ApiController]
-    [Authorize("Admin")]
+    [Authorize(Roles = "Admin")]
     public class MedicamentoController : ControllerBase
     {
 
