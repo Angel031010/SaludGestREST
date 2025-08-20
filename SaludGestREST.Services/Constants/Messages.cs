@@ -30,7 +30,8 @@ namespace SaludGestREST.Services.Constants
         {
             // Búsqueda/Existencia
             public const string ProductNotFoundWithId = "Producto con ID {0} no encontrado";
-            public const string MedicamentoNotFoundWithId = "Medicamento con ID {0} no encontrado";
+            public const string MedicamentoNotFoundWithId = "Medicamento con ID no encontrado";
+            public const string PacienteNotFoundWithId = "Paciente con ID no encontrado";
             public const string ProductNotFound = "Producto no encontrado";
             public const string MedicamentoNotFound = "Medicamentos no encontrados";
             public const string BrandNotFound = "Marca no encontrada";
