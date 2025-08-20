@@ -59,6 +59,7 @@ namespace SaludGestREST.Services.Constants
             public const string BrandDeleteError = "Error al eliminar la marca";
             public const string CategoryDeleteError = "Error al eliminar la categoría";
             public const string ProductCannotBeDeleted = "No se puede eliminar el producto porque tiene referencias";
+            public const string EspecialidadError = "Se genero un error al actualizar la especialidad";
         }
 
         public static class Validation

@@ -14,6 +14,7 @@ namespace SaludGestREST.Data
         public DbSet<CentroMedico> CentrosMedicos { get; set; }
         public DbSet<Medicamento> Medicamentos { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
+        public DbSet<Especialidad> Especialidades { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
