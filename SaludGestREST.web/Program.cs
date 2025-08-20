@@ -22,6 +22,7 @@ builder.Services.AddScoped<ICentroMedicoService, CentroMedicoService>();
 builder.Services.AddScoped<IMedicamentoService, MedicamentoService>();
 builder.Services.AddScoped<IPacienteService, PacienteService>();
 builder.Services.AddScoped<IInventarioService, InventarioService>();
+builder.Services.AddScoped<IEspecialidadService, EspecialidadService>();
 #endregion
 
 #region Settings
