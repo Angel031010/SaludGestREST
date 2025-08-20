@@ -22,14 +22,14 @@ namespace SaludGestREST.Services.Services.Implementations
         }
         public async Task AddAsync(InventarioDTO dto)
         {
-            var inventario = new InventarioDTO
+            var inventario = new InventarioMedicamento
             {
                 Cantidad = dto.Cantidad,
-                CentroId = dto.Cantidad,
+                CentroId = dto.CentroId,
                 MedicamentoId = dto.MedicamentoId,
                 Minimo = dto.Minimo
             };
-            await _context.AddAsync(inventario);
+            await _context.InventarioMedico.AddAsync(inventario);
             await _context.SaveChangesAsync();
             dto.MedicamentoId = inventario.MedicamentoId;
         }
@@ -53,7 +53,7 @@ namespace SaludGestREST.Services.Services.Implementations
                 {
                     InventarioMedId = x.InventarioMedId,
                     Cantidad = x.Cantidad,
-                    CentroId = x.Cantidad,
+                    CentroId = x.CentroId,
                     MedicamentoId = x.MedicamentoId,
                     Minimo = x.Minimo,
                     HighSystem = x.HighSystem,

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SaludGestREST.Data;
 using SaludGestREST.Services.Constants;
@@ -9,6 +10,7 @@ namespace SaludGestREST.web.Controllers
 {
     [Route("medicamento")]
     [ApiController]
+    [Authorize("Admin")]
     public class MedicamentoController : ControllerBase
     {
 
