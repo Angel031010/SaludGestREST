@@ -49,7 +49,7 @@ namespace SaludGestREST.web.Controllers
                 await _inventarioService.AddAsync(medicamentoDTO);
                 return Ok();
             }
-            catch
+            catch(Exception ex)
             {
                 return BadRequest(new { mesage = Messages.Error.InventarioCreateError });
             }
