@@ -14,5 +14,6 @@ namespace SaludGestREST.Data.Models
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }
+        public string ImagenUrl { get; set; }
     }
 }
