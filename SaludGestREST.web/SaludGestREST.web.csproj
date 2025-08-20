@@ -23,6 +23,7 @@
 	
   <ItemGroup>
     <ProjectReference Include="..\SaludGestREST.Data\SaludGestREST.Data.csproj" />
+    <ProjectReference Include="..\SaludGestREST.Services\SaludGestREST.Services.csproj" />
   </ItemGroup>
 
 </Project>
