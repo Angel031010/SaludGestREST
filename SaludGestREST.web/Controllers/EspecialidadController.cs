@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SaludGestREST.Services.Constants;
 using SaludGestREST.Services.DTOs.Especialidad;
 using SaludGestREST.Services.Services.Interfaces;
+using System.Linq.Expressions;
 
 namespace SaludGestREST.web.Controllers
 {
@@ -22,16 +24,19 @@ namespace SaludGestREST.web.Controllers
             return Ok(products);
         }
 
-        [HttpGet("{IdEspecialidad}")]
-        public async Task<IActionResult> GetById(int idEspecialidad)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
         {
-            var especialidad = await _especialidadService.GetByIdAsync(idEspecialidad);
 
-            if (especialidad == null)
+            try 
             {
-                return NotFound(new { message = "El producto no existe" });     // Respuesta HTTP 404 Not Found con un mensaje
+                var especialidad = await _especialidadService.GetByIdAsync(id);
+                return Ok(especialidad);     
             }
-            return Ok(especialidad);                                                 // Retorna 200 OK con el producto encontrado.
+            catch{
+
+                return BadRequest (new { message = Messages.Error.CentroMedicoNotFoundWithId });                                                 
+            }
         }
 
 
@@ -46,7 +51,7 @@ namespace SaludGestREST.web.Controllers
             {
                 await _especialidadService.AddAsync(especialidadDTO);
 
-                return CreatedAtAction(nameof(GetById), new { id = especialidadDTO.IdEspecialidad }, especialidadDTO);    // Retorna 201 Created con la información del nuevo producto.
+                return NoContent();   // Retorna 201 Created con la información del nuevo producto.
             }
             catch (Exception ex)
             {
