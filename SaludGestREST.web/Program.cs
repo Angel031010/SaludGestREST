@@ -5,9 +5,6 @@ using SaludGestREST.Data;
 using SaludGestREST.Services.Services.Interfaces;
 using SaludGestREST.Services.Services.Implementations;
 using SaludGestREST.Services.Settings;
-using SaludGestREST.Services.Services.Implementations;
-using SaludGestREST.Services.Services.Interfaces;
-using SaludGestREST.Services.Settings;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 var builder = WebApplication.CreateBuilder(args);

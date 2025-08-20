@@ -45,7 +45,7 @@ namespace SaludGestREST.Services.Services.Implementations
                     Telefono = x.Telefono,
                     UrlFoto = x.UrlFoto,
                     Email = x.Email,
-                    Active = x.IsActive,
+                    IsActive= x.IsActive,
                     HighSystem = x.HighSystem
                 })
                 .ToListAsync();
@@ -66,7 +66,7 @@ namespace SaludGestREST.Services.Services.Implementations
                     Telefono = x.Telefono,
                     UrlFoto = x.UrlFoto,
                     Email = x.Email,
-                    Active = x.IsActive,
+                    IsActive = x.IsActive,
                     HighSystem = x.HighSystem
                 })
                 .FirstOrDefaultAsync();

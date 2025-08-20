@@ -31,7 +31,7 @@ namespace SaludGestREST.Services.Services.Implementations
                     IdEspecialidad = e.IdEspecialidad,
                     Nombre = e.Nombre,
                     Descripcion = e.Descripcion,
-                    Active = e.IsActive,
+                    IsActive = e.IsActive,
                     HighSystem = e.HighSystem
                 })
             .ToListAsync();
@@ -60,7 +60,7 @@ namespace SaludGestREST.Services.Services.Implementations
                 {
                     IdEspecialidad = e.IdEspecialidad,
                     Nombre = e.Nombre,
-                    Active = e.IsActive,
+                    IsActive = e.IsActive,
                     HighSystem = e.HighSystem
                 })
             .FirstOrDefaultAsync();
