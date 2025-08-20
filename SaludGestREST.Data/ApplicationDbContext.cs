@@ -15,6 +15,7 @@ namespace SaludGestREST.Data
         public DbSet<Medicamento> Medicamentos { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Especialidad> Especialidades { get; set; }
+        public DbSet<InventarioMedicamento> InventarioMedico { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -60,6 +61,77 @@ namespace SaludGestREST.Data
                     HighSystem = DateTime.Now
                 }
             );
+            modelBuilder.Entity<Medicamento>().HasData(
+                new Medicamento
+                {
+                    MedicamentoId = 1,
+                    Nombre = "Rosel",
+                    Lote = "1234457",
+                    Codigo = "234r324",
+                    Sustancia = "Paracetamol"
+                },
+                new Medicamento
+                {
+                    MedicamentoId = 2,
+                    Nombre = "Neomelubrina",
+                    Lote = "12344",
+                    Codigo = "23324",
+                    Sustancia = "Parace"
+                }
+                );
+            modelBuilder.Entity<Paciente>().HasData(
+                new Paciente
+                {
+                    PacienteId = 1,
+                    Nombre = "Sergio",
+                    ApPaterno = "Hernandez",
+                    ApMaterno = "Velasco",
+                    Telefono = 557511785,
+                    UrlFoto = "/default.jpg",
+                    Email = "ejemplo@test.com",
+                    FechaNacimiento = DateTime.Now.AddYears(-36)
+                },
+                new Paciente
+                {
+                    PacienteId = 2,
+                    Nombre = "Angel",
+                    ApPaterno = "Ildefonso",
+                    ApMaterno = "Sanchez",
+                    Telefono = 557486785,
+                    UrlFoto = "/default.jpg",
+                    Email = "ejemplo@test.com",
+                    FechaNacimiento = DateTime.Now.AddYears(-22)
+                },
+                new Paciente
+                {
+                    PacienteId = 3,
+                    Nombre = "Roberto",
+                    ApPaterno = "Sapiens",
+                    ApMaterno = "Castillo",
+                    Telefono = 5632111785,
+                    UrlFoto = "/default.jpg",
+                    Email = "ejemplo@test.com",
+                    FechaNacimiento = DateTime.Now.AddYears(-24)
+                }
+                );
+            modelBuilder.Entity<InventarioMedicamento>().HasData(
+                new InventarioMedicamento
+                {
+                    InventarioMedId = 1,
+                    CentroId = 1,
+                    MedicamentoId = 1,
+                    Cantidad = 10,
+                    Minimo = 5
+                },
+                new InventarioMedicamento
+                {
+                    InventarioMedId = 2,
+                    CentroId = 2,
+                    MedicamentoId = 2,
+                    Cantidad = 10,
+                    Minimo = 5
+                }
+                );
         }
     }
 }
