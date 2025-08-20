@@ -7,6 +7,10 @@ using SaludGestREST.Services.Services.Implementations;
 using SaludGestREST.Services.Settings;
 using Serilog;
 using SaludGestREST.Data.Models;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,14 +34,55 @@ builder.Host.UseSerilog();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//Usar token en swagger
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer", new()
+    {
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        In = ParameterLocation.Header
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new() { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
 var conncection = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Conection string 'DeafaultConnection' ot foud");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(conncection));
 //Configurar Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
+//Recuperamos SecretKey
+var secretKey = Encoding.ASCII.GetBytes(
+    builder.Configuration.GetValue<string>("JwtSettings:SecretKey"));
 
+//Añadir autenticación
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer(x =>
+    {
+        x.RequireHttpsMetadata = false; //Desactiva el requerimiento
+        x.SaveToken = true;
+        x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(secretKey),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
 
 #region Services
 builder.Services.AddScoped<ICentroMedicoService, CentroMedicoService>();
@@ -70,6 +115,7 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = "/Uploads"
 });
 
+app.UseAuthentication();
 
 app.UseAuthorization();
 
