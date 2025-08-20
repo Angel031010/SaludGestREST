@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -26,6 +27,6 @@ namespace SaludGestREST.Services.DTOs.CentroMedico
         public string Email { get; set; }
 
         [Required(ErrorMessage = "La imagen es requerida")]
-        public string ImagenUrl { get; set; }
+        public IFormFile File { get; set; }
     }
 }
