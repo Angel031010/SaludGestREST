@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SaludGestREST.Services.Services.Interfaces
 {
-    internal class ICentroMedicoService
+    public class ICentroMedicoService
     {
     }
 }

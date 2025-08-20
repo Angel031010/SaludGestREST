@@ -43,7 +43,7 @@ namespace SaludGestREST.web.Controllers
             }
         }
         [HttpPost]
-        public async Task<IActionResult> Crear([FromBody] PacienteCreateDTO createDTO)
+        public async Task<IActionResult> Crear([FromForm] PacienteCreateDTO createDTO)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace SaludGestREST.web.Controllers
             }
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> Actualizar(int id, [FromBody] PacienteCreateDTO createDTO)
+        public async Task<IActionResult> Actualizar(int id, [FromForm] PacienteCreateDTO createDTO)
         {
             try
             {

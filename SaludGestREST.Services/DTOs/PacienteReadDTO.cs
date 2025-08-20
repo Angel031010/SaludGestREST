@@ -13,7 +13,7 @@ namespace SaludGestREST.Services.DTOs
         public string ApPaterno { get; set; }
         public string ApMaterno { get; set; }
         public DateTime FechaNacimiento { get; set; }
-        public int Telefono { get; set; }
+        public decimal Telefono { get; set; }
         public string UrlFoto { get; set; }
         public string Email { get; set; }
     }

@@ -1,18 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using SaludGestREST.Data;
 using SaludGestREST.Data.Models;
 using SaludGestREST.Services.Constants;
 using SaludGestREST.Services.DTOs;
 using SaludGestREST.Services.Services.Interfaces;
 using SaludGestREST.Services.Settings;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SaludGestREST.Services.Services.Implementations
 {
@@ -20,9 +14,9 @@ namespace SaludGestREST.Services.Services.Implementations
     {
         private readonly UploadSettings _uploadSettings;
         private readonly ApplicationDbContext _context;
-        public PacienteService(UploadSettings uploadSettings, ApplicationDbContext context)
+        public PacienteService(IOptions<UploadSettings> uploadSettings, ApplicationDbContext context)
         {
-            _uploadSettings = uploadSettings;
+            _uploadSettings = uploadSettings.Value;
             _context = context;
         }
 
