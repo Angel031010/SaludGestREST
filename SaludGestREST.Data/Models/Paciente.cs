@@ -19,5 +19,7 @@ namespace SaludGestREST.Data.Models
         public decimal Telefono { get; set; }
         public string UrlFoto { get; set; }
         public string Email { get; set; }
+
+        public IEnumerable<ContactoPaciente> contactoPacientes { get; set; }
     }
 }
