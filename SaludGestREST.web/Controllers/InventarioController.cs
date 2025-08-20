@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SaludGestREST.Services.Constants;
 using SaludGestREST.Services.DTOs;
@@ -8,6 +9,7 @@ namespace SaludGestREST.web.Controllers
 {
     [Route("inventario")]
     [ApiController]
+    [Authorize("Medico")]
     public class InventarioController : ControllerBase
     {
         private readonly IInventarioService _inventarioService;

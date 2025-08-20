@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SaludGestREST.Services.Constants;
 using SaludGestREST.Services.DTOs;
@@ -9,6 +10,7 @@ namespace SaludGestREST.web.Controllers
 {
     [Route("api/v1/pacientes")]
     [ApiController]
+    [Authorize]
     public class PacienteController : ControllerBase
     {
         private readonly IPacienteService _servicePaciente;
