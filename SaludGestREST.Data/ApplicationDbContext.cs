@@ -59,5 +59,6 @@ namespace SaludGestREST.Data
                 }
             );
         }
+        public DbSet<Medicamento> Medicamentos { get; set; }
     }
 }
