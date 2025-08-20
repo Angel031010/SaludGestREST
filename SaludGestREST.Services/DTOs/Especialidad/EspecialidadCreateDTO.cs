@@ -9,7 +9,6 @@ namespace SaludGestREST.Services.DTOs.Especialidad
 {
     public class EspecialidadCreateDTO : RegistryDTO
     {
-        public int IdEspecialidad { get; set; }
         [Display(Name = "Nombre")]
         [Required(ErrorMessage = "El valor es requerido")]
         public string Nombre { get; set; }

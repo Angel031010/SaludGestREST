@@ -40,7 +40,7 @@ namespace SaludGestREST.Services.Services.Implementations
 
         public async Task AddAsync(EspecialidadCreateDTO especialidadCreateDTO)
         {
-            Especialidad especialidad = new Especialidad
+            var especialidad = new Especialidad
             {
                 Nombre = especialidadCreateDTO.Nombre,
                 Descripcion = especialidadCreateDTO.Descripcion,
@@ -49,17 +49,17 @@ namespace SaludGestREST.Services.Services.Implementations
 
             await _context.Especialidades.AddAsync(especialidad);
             await _context.SaveChangesAsync();
-            especialidadCreateDTO.IdEspecialidad = especialidad.IdEspecialidad;
         }
 
-        public async Task<EspecialidadReadDTO> GetByIdAsync(int idEspecialidad)
+        public async Task<EspecialidadReadDTO> GetByIdAsync(int id)
         {
             var especialidad = await _context.Especialidades
-                .Where(e => e.IsActive == true && e.IdEspecialidad == idEspecialidad)
+                .Where(e => e.IdEspecialidad == id)
                 .Select(e => new EspecialidadReadDTO
                 {
                     IdEspecialidad = e.IdEspecialidad,
                     Nombre = e.Nombre,
+                    Descripcion = e.Descripcion,
                     IsActive = e.IsActive,
                     HighSystem = e.HighSystem
                 })
@@ -99,9 +99,5 @@ namespace SaludGestREST.Services.Services.Implementations
             await _context.SaveChangesAsync();
         }
 
-        public Task<EspecialidadReadDTO> GetDetailsByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
