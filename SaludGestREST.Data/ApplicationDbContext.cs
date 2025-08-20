@@ -15,5 +15,6 @@ namespace SaludGestREST.Data
             : base(options)
         {
         }
+        public DbSet<Medicamento> Medicamentos { get; set; }
     }
 }
