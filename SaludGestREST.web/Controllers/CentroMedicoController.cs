@@ -37,7 +37,7 @@ namespace SaludGestREST.web.Uploads
             }
             catch
             {
-                return BadRequest(new { message = Messages.Error.MedicamentoNotFoundWithId });
+                return BadRequest(new { message = Messages.Error.CentroMedicoNotFoundWithId });
             }
         }
 
@@ -52,7 +52,7 @@ namespace SaludGestREST.web.Uploads
             }
             catch
             {
-                return BadRequest(new { mesage = Messages.Error.MedicamentoCreateError });
+                return BadRequest(new { mesage = Messages.Error.CentroMedicoCreateError });
             }
         }
 
@@ -64,7 +64,7 @@ namespace SaludGestREST.web.Uploads
             var centroMedico = await _serviceCentroMedico.GetByIdAsync(id);
             if (centroMedico == null)
             {
-                return NotFound(new { message = Messages.Error.MedicamentoNotFoundWithId });
+                return NotFound(new { message = Messages.Error.CentroMedicoNotFoundWithId });
             }
 
             try
@@ -74,7 +74,7 @@ namespace SaludGestREST.web.Uploads
             }
             catch
             {
-                return BadRequest(new { message = Messages.Error.MedicamentoUpdateError });
+                return BadRequest(new { message = Messages.Error.CentroMedicoUpdateError });
             }
         }
 
@@ -89,7 +89,7 @@ namespace SaludGestREST.web.Uploads
             }
             catch
             {
-                return BadRequest(new { mesage = Messages.Error.MedicamentoDeleteError });
+                return BadRequest(new { mesage = Messages.Error.CentroMedicoDeleteError});
             }
         }
     }

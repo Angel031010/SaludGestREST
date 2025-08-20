@@ -54,7 +54,7 @@ namespace SaludGestREST.Services.Services.Implementations
         {
             var centroMedico = await _context.CentrosMedicos.FindAsync(id);
             if (centroMedico == null)
-                throw new KeyNotFoundException(nameof(id));
+                throw new KeyNotFoundException(string.Format(Messages.Error.CentroMedicoNotFoundWithId, id));
             centroMedico.IsDeleted = true;
             centroMedico.IsActive = false;
             _context.CentrosMedicos.Update(centroMedico);
@@ -96,14 +96,9 @@ namespace SaludGestREST.Services.Services.Implementations
                 })
                 .FirstOrDefaultAsync();
             if (centroMedico == null)
-                throw new KeyNotFoundException(nameof(id));
+                throw new KeyNotFoundException(string.Format(Messages.Error.CentroMedicoNotFoundWithId, id));
 
             return centroMedico;
-        }
-
-        public Task<CentroMedicoReadDTO> GetDetailsByIdAsync(int id)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task UpdateAsync(int id, CentroMedicoUpdateDTO dto)
@@ -113,7 +108,7 @@ namespace SaludGestREST.Services.Services.Implementations
 
             if (centroMedico == null)
             {
-                throw new KeyNotFoundException(nameof(id));
+                throw new KeyNotFoundException(string.Format(Messages.Error.CentroMedicoNotFoundWithId, id));
             }
 
             centroMedico.Nombre = dto.Nombre;
