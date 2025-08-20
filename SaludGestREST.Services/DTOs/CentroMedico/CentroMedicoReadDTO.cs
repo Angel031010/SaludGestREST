@@ -9,7 +9,7 @@ namespace SaludGestREST.Services.DTOs.CentroMedico
 {
     public class CentroMedicoReadDTO : RegistryDTO
     {
-        public int IdCentro { get; set; }
+        public int CentroMedicoId { get; set; }
 
         [Display(Name = "Nombre del Centro Médico")]
         public string Nombre { get; set; }
