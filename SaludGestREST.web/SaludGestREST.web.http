@@ -1,0 +1,6 @@
+@SaludGestREST.web_HostAddress = http://localhost:5123
+
+GET {{SaludGestREST.web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
