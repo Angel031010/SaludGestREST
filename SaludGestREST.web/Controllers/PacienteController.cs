@@ -7,7 +7,7 @@ using SaludGestREST.Services.Services.Interfaces;
 
 namespace SaludGestREST.web.Controllers
 {
-    [Route("paciente")]
+    [Route("api/v1/pacientes")]
     [ApiController]
     public class PacienteController : ControllerBase
     {

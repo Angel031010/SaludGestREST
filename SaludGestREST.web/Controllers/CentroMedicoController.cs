@@ -1,43 +1,96 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SaludGestREST.Services.Constants;
+using SaludGestREST.Services.DTOs;
+using SaludGestREST.Services.DTOs.CentroMedico;
+using SaludGestREST.Services.Services.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace SaludGestREST.web.Uploads
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/centrosMedicos")]
     [ApiController]
     public class CentroMedicoController : ControllerBase
     {
-        // GET: api/<CentroMedicoController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly ICentroMedicoService _serviceCentroMedico;
+
+        public CentroMedicoController(ICentroMedicoService service)
         {
-            return new string[] { "value1", "value2" };
+            _serviceCentroMedico = service;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var centrosMedicos = await _serviceCentroMedico.GetAllAsync();
+            return Ok(centrosMedicos);
         }
 
         // GET api/<CentroMedicoController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            return "value";
+            try
+            {
+                var centrosMedico = await _serviceCentroMedico.GetByIdAsync(id);
+                return Ok(centrosMedico);
+            }
+            catch
+            {
+                return BadRequest(new { message = Messages.Error.CentroMedicoNotFoundWithId });
+            }
         }
 
         // POST api/<CentroMedicoController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> CreateCentroMedico([FromForm] CentroMedicoCreateDTO centroMedicoCreateDTO)
         {
+            try
+            {
+                await _serviceCentroMedico.AddAsync(centroMedicoCreateDTO);
+                return NoContent();
+            }
+            catch
+            {
+                return BadRequest(new { mesage = Messages.Error.CentroMedicoCreateError });
+            }
         }
 
         // PUT api/<CentroMedicoController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> EditCentroMedico(int id, [FromForm] CentroMedicoUpdateDTO centroMedicoUpdateDTO)
         {
+
+            var centroMedico = await _serviceCentroMedico.GetByIdAsync(id);
+            if (centroMedico == null)
+            {
+                return NotFound(new { message = Messages.Error.CentroMedicoNotFoundWithId });
+            }
+
+            try
+            {
+                await _serviceCentroMedico.UpdateAsync(id, centroMedicoUpdateDTO);
+                return NoContent();
+            }
+            catch
+            {
+                return BadRequest(new { message = Messages.Error.CentroMedicoUpdateError });
+            }
         }
 
         // DELETE api/<CentroMedicoController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> DeleteCentroMedico(int id)
         {
+            try
+            {
+                await _serviceCentroMedico.DeleteAsync(id);
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest(new { mesage = Messages.Error.CentroMedicoDeleteError});
+            }
         }
     }
 }

@@ -10,12 +10,10 @@ namespace SaludGestREST.Services.DTOs
     public class RegistryDTO
     {
         [Display(Name = "Estatus")]
-        public bool Active { get; set; } = true;
+        public bool IsActive { get; set; } = true;
 
         [Display(Name = "Alta")]
         public DateTime HighSystem { get; set; } = DateTime.Now;
-        [Display(Name = "Actualizado")]
-        public DateTime UpdatedAt { get; set; }
 
     }
 }

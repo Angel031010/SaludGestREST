@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.FileProviders;
 using SaludGestREST.Data;
 using SaludGestREST.Services.Services.Interfaces;
 using SaludGestREST.Services.Services.Implementations;
 using SaludGestREST.Services.Settings;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -18,6 +18,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 
 
 #region Services
+builder.Services.AddScoped<ICentroMedicoService, CentroMedicoService>();
 builder.Services.AddScoped<IMedicamentoService, MedicamentoService>();
 builder.Services.AddScoped<IPacienteService, PacienteService>();
 #endregion
@@ -35,6 +36,15 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.ContentRootPath, "Uploads") // Ajusta "Uploads" si está en otra subcarpeta
+    ),
+    RequestPath = "/Uploads"
+});
+
 
 app.UseAuthorization();
 
