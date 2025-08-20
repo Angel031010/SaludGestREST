@@ -8,7 +8,7 @@ namespace SaludGestREST.Data.Models
 {
     public class CentroMedico : Registry
     {
-        public int IdCentro { get; set; }
+        public int CentroMedicoId { get; set; }
         public string Nombre { get; set; }
         public string Codigo { get; set; }
         public string Direccion { get; set; }
