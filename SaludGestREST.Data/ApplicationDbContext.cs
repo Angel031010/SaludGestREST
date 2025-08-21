@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SaludGestREST.Data.Models;
 
@@ -15,6 +17,7 @@ namespace SaludGestREST.Data
         public DbSet<Medicamento> Medicamentos { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Especialidad> Especialidades { get; set; }
+        public DbSet<ContactoPaciente> ContactosPacientes { get; set; }
         public DbSet<InventarioMedicamento> InventarioMedico { get; set; }
         public DbSet<Medico> Medicos { get; set; }
 
@@ -134,6 +137,74 @@ namespace SaludGestREST.Data
                     Minimo = 5
                 }
                 );
+            #region Usuario
+            //Definir IDs unicos
+            var userId = Guid.NewGuid().ToString();
+            var roleId = Guid.NewGuid().ToString();
+            var hasher = new PasswordHasher<ApplicationUser>();
+
+            //Crear rol de administrador
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole
+                {
+                    Id = roleId,
+                    Name = "Admin",
+                    NormalizedName = "ADMIN"
+                });
+            //Crear un usuario administrador
+            modelBuilder.Entity<ApplicationUser>().HasData(
+                new ApplicationUser
+                {
+                    Id = userId,
+                    UserName = "admin@test.com",
+                    NormalizedUserName = "ADMIN@TEST.COM",
+                    Email = "admin@test.com",
+                    NormalizedEmail = "ADMIN@TEST.COM",
+                    EmailConfirmed = true,
+                    PasswordHash = hasher.HashPassword(null, "Admin123!"),
+                    SecurityStamp = Guid.NewGuid().ToString()
+                });
+
+            //Asignar rol al usuario
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = roleId,
+                UserId = userId
+            });
+            //Definir IDs unicos
+            userId = Guid.NewGuid().ToString();
+            roleId = Guid.NewGuid().ToString();
+            hasher = new PasswordHasher<ApplicationUser>();
+
+            //Crear rol de administrador
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole
+                {
+                    Id = roleId,
+                    Name = "Medico",
+                    NormalizedName = "Medico"
+                });
+            //Crear un usuario administrador
+            modelBuilder.Entity<ApplicationUser>().HasData(
+                new ApplicationUser
+                {
+                    Id = userId,
+                    UserName = "medico@test.com",
+                    NormalizedUserName = "MEDICO@TEST.COM",
+                    Email = "medico@test.com",
+                    NormalizedEmail = "MEDICO@TEST.COM",
+                    EmailConfirmed = true,
+                    PasswordHash = hasher.HashPassword(null, "Medico123!"),
+                    SecurityStamp = Guid.NewGuid().ToString()
+                });
+
+            //Asignar rol al usuario
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = roleId,
+                UserId = userId
+            });
+            #endregion
         }
     }
 }

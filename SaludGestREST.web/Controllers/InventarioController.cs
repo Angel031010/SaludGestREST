@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SaludGestREST.Services.Constants;
 using SaludGestREST.Services.DTOs;
@@ -8,6 +9,7 @@ namespace SaludGestREST.web.Controllers
 {
     [Route("inventario")]
     [ApiController]
+    [Authorize(Roles = "Medico")]
     public class InventarioController : ControllerBase
     {
         private readonly IInventarioService _inventarioService;
@@ -49,7 +51,7 @@ namespace SaludGestREST.web.Controllers
                 await _inventarioService.AddAsync(medicamentoDTO);
                 return Ok();
             }
-            catch
+            catch (Exception ex)
             {
                 return BadRequest(new { mesage = Messages.Error.InventarioCreateError });
             }
