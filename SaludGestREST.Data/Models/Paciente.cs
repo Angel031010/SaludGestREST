@@ -20,6 +20,6 @@ namespace SaludGestREST.Data.Models
         public string UrlFoto { get; set; }
         public string Email { get; set; }
 
-        public IEnumerable<ContactoPaciente> contactoPacientes { get; set; }
+        public IEnumerable<ContactoPaciente> contactsoPacientes { get; set; }
     }
 }

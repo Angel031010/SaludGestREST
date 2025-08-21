@@ -34,6 +34,7 @@ namespace SaludGestREST.Services.Constants
             public const string InventarioNotFoundWithId = "Inventario con ID no encontrado";
             public const string PacienteNotFoundWithId = "Paciente con ID no encontrado";
             public const string CentroMedicoNotFoundWithId = "Centro Medico con ID no encontrado";
+            public const string ContactoPacienteNotFoundWithId = "Cantacto de paciente con ID no encontrado";
             public const string CentroMedicoNotFound = "Cemtrp Médico no encontrado";
             public const string MedicamentoNotFound = "Medicamentos no encontrados";
             public const string InventariosNotFound = "Inventarios no encontrados";
@@ -47,6 +48,7 @@ namespace SaludGestREST.Services.Constants
             public const string InventarioCreateError = "Hubo un error al agregar el inventario";
             public const string PcienteCreateError = "Hubo un error al agregar el paciente";
             public const string CentroMedicoCreateError = "Hubo un error al agregar el Centro Médico";
+            public const string ContactoPacienteCreateError = "Hubo un error al agregar el contacto del paciente";
 
             // Actualización
             public const string ProductUpdateError = "Error al actualizar el producto";
@@ -56,6 +58,7 @@ namespace SaludGestREST.Services.Constants
             public const string BrandUpdateError = "Error al actualizar la marca";
             public const string CategoryUpdateError = "Error al actualizar la categoría";
             public const string CentroMedicoUpdateError = "Hubo un error al modificar el Centro Médico";
+            public const string ContactoPacienteUpdateError = "Hubo un error al modificar el contacto del paciente";
 
             // Eliminación
             public const string ProductDeleteError = "Error al eliminar el producto";
@@ -67,6 +70,7 @@ namespace SaludGestREST.Services.Constants
             public const string ProductCannotBeDeleted = "No se puede eliminar el producto porque tiene referencias";
             public const string EspecialidadError = "Se genero un error al actualizar la especialidad";
             public const string CentroMedicoDeleteError = "Error al eliminar el Centro Médico";
+            public const string ContactoPacienteDeleteError = "Error al eliminar el contacto del paciente";
         }
 
         public static class Validation

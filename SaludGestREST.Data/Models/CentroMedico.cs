@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace SaludGestREST.Data.Models
     public class CentroMedico : Registry
     {
         public int CentroMedicoId { get; set; }
+        [Required]
         public string Nombre { get; set; }
         public string Codigo { get; set; }
         public string Direccion { get; set; }
