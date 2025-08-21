@@ -17,6 +17,7 @@ namespace SaludGestREST.Data
         public DbSet<Medicamento> Medicamentos { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Especialidad> Especialidades { get; set; }
+        public DbSet<ProveedorMedicamento> ProveedorMedicamentos { get; set; }
         public DbSet<ContactoPaciente> ContactosPacientes { get; set; }
         public DbSet<InventarioMedicamento> InventarioMedico { get; set; }
         public DbSet<Medico> Medicos { get; set; }
