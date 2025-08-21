@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SaludGestREST.Data;
 
@@ -11,9 +12,11 @@ using SaludGestREST.Data;
 namespace SaludGestREST.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250821144518_KEys")]
+    partial class KEys
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,13 +54,13 @@ namespace SaludGestREST.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "de998643-c81b-4090-8440-ebefd507cb19",
+                            Id = "cca85c6b-fe81-49ed-899a-b380e12adeba",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "45bface9-f451-446d-8ed6-593d0b57d5c0",
+                            Id = "a1ea680f-d237-4bb4-b064-87571e2ffb2e",
                             Name = "Medico",
                             NormalizedName = "Medico"
                         });
@@ -152,13 +155,13 @@ namespace SaludGestREST.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "9838db50-8576-4da9-b1bf-63ccb69ff726",
-                            RoleId = "de998643-c81b-4090-8440-ebefd507cb19"
+                            UserId = "68bda713-835b-4bf5-a137-275ffb1f88d8",
+                            RoleId = "cca85c6b-fe81-49ed-899a-b380e12adeba"
                         },
                         new
                         {
-                            UserId = "a845337b-9e1f-42d4-b086-589cc974dfa4",
-                            RoleId = "45bface9-f451-446d-8ed6-593d0b57d5c0"
+                            UserId = "923f9ea3-c9ea-47a2-9800-8e5137991435",
+                            RoleId = "a1ea680f-d237-4bb4-b064-87571e2ffb2e"
                         });
                 });
 
@@ -248,33 +251,33 @@ namespace SaludGestREST.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9838db50-8576-4da9-b1bf-63ccb69ff726",
+                            Id = "68bda713-835b-4bf5-a137-275ffb1f88d8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "44fedd4d-e2ec-4dbd-bea4-08fc65551fba",
+                            ConcurrencyStamp = "41cd5faa-f4bc-484b-8997-8e3ed459bac2",
                             Email = "admin@test.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@TEST.COM",
                             NormalizedUserName = "ADMIN@TEST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEF6haJ4eSjTyFZ/n/D42VDAM/vlPPN/PPmGugyGO60RQBJUT30dgb6vZmSzSxrO01A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGe73DD52aHn3caqjm0YtgygQhfOUJ9+JiT8411h6Gc0taY0wcQTIkdlTDHrtpFQ3Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3f949376-3349-4ec7-b4ee-8828d2dd9e18",
+                            SecurityStamp = "f059a92f-4087-4ce7-be30-923d43fe449b",
                             TwoFactorEnabled = false,
                             UserName = "admin@test.com"
                         },
                         new
                         {
-                            Id = "a845337b-9e1f-42d4-b086-589cc974dfa4",
+                            Id = "923f9ea3-c9ea-47a2-9800-8e5137991435",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "47243c2d-9f45-4229-8c55-3b377aa46595",
+                            ConcurrencyStamp = "3de7165f-2ef0-4d84-934d-699827a617a8",
                             Email = "medico@test.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MEDICO@TEST.COM",
                             NormalizedUserName = "MEDICO@TEST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAyaesaQ5+FfQ29y1+eEnwKKKZbWafwzXcKVnWYbuFnYkSv3c5WzcNY8Y7nvx8LSBw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDIB7PYjgI9n9nrsNOrJbo3q3H19+MqUKVwfW/fOC1i07Q98qsCSrdbHCfhak+3JYA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ba4bfce2-06d4-4e9a-93bd-18879bebcfdb",
+                            SecurityStamp = "dbce633d-f374-4696-827c-df1b35ddc93f",
                             TwoFactorEnabled = false,
                             UserName = "medico@test.com"
                         });
@@ -332,7 +335,7 @@ namespace SaludGestREST.Data.Migrations
                             Codigo = "CMP001",
                             Direccion = "Av. Reforma 123, Puebla, PUE",
                             Email = "contacto@cmpuebla.com",
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6037),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(361),
                             ImagenUrl = "/Uploads/centroMedico.jpg",
                             IsActive = true,
                             IsDeleted = false,
@@ -345,7 +348,7 @@ namespace SaludGestREST.Data.Migrations
                             Codigo = "CM002",
                             Direccion = "Calle Juárez 456, CDMX",
                             Email = "info@clinicametropolitana.com",
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6041),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(366),
                             ImagenUrl = "/Uploads/hospitalAngelopolitano.jpg",
                             IsActive = true,
                             IsDeleted = false,
@@ -358,7 +361,7 @@ namespace SaludGestREST.Data.Migrations
                             Codigo = "HV003",
                             Direccion = "Av. Universidad 789, Guadalajara, JAL",
                             Email = "hospital@delvalle.com",
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6043),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(370),
                             ImagenUrl = "/Uploads/Valle.jpg",
                             IsActive = true,
                             IsDeleted = false,
@@ -419,8 +422,8 @@ namespace SaludGestREST.Data.Migrations
                             CitaId = 1,
                             CentroMedicoId = 1,
                             DuracionMinutos = 30.00m,
-                            FechaHora = new DateTime(2025, 8, 22, 19, 12, 53, 596, DateTimeKind.Local).AddTicks(9599),
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(9595),
+                            FechaHora = new DateTime(2025, 8, 22, 18, 45, 16, 854, DateTimeKind.Local).AddTicks(6523),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(6517),
                             IsActive = true,
                             IsDeleted = false,
                             MedicoId = 1,
@@ -432,8 +435,8 @@ namespace SaludGestREST.Data.Migrations
                             CitaId = 2,
                             CentroMedicoId = 1,
                             DuracionMinutos = 45.50m,
-                            FechaHora = new DateTime(2025, 8, 24, 0, 12, 53, 596, DateTimeKind.Local).AddTicks(9607),
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(9606),
+                            FechaHora = new DateTime(2025, 8, 23, 23, 45, 16, 854, DateTimeKind.Local).AddTicks(6535),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(6533),
                             IsActive = true,
                             IsDeleted = false,
                             MedicoId = 2,
@@ -445,8 +448,8 @@ namespace SaludGestREST.Data.Migrations
                             CitaId = 3,
                             CentroMedicoId = 2,
                             DuracionMinutos = 60.00m,
-                            FechaHora = new DateTime(2025, 8, 24, 18, 12, 53, 596, DateTimeKind.Local).AddTicks(9609),
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(9608),
+                            FechaHora = new DateTime(2025, 8, 24, 17, 45, 16, 854, DateTimeKind.Local).AddTicks(6538),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(6537),
                             IsActive = true,
                             IsDeleted = false,
                             MedicoId = 3,
@@ -512,7 +515,7 @@ namespace SaludGestREST.Data.Migrations
                             Ciudad = "CDMX",
                             CodigoPostal = "06000",
                             Estado = "CDMX",
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6411),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(834),
                             IsActive = true,
                             IsDeleted = false,
                             PacienteId = 1,
@@ -526,7 +529,7 @@ namespace SaludGestREST.Data.Migrations
                             Ciudad = "Puebla",
                             CodigoPostal = "72000",
                             Estado = "Puebla",
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6416),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(840),
                             IsActive = true,
                             IsDeleted = false,
                             PacienteId = 2,
@@ -540,7 +543,7 @@ namespace SaludGestREST.Data.Migrations
                             Ciudad = "Toluca",
                             CodigoPostal = "50000",
                             Estado = "Edo. México",
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6417),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(843),
                             IsActive = true,
                             IsDeleted = false,
                             PacienteId = 3,
@@ -577,44 +580,6 @@ namespace SaludGestREST.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Especialidades");
-
-                    b.HasData(
-                        new
-                        {
-                            IdEspecialidad = 1,
-                            Descripcion = "Cardiología: Corazón y sistema circulatorio. Endocrinología: Enfermedades hormonales y del metabolismo (ej. diabetes, tiroides). Gastroenterología: Sistema digestivo (estómago, intestinos, hígado). Neumología: Pulmones y sistema respiratorio. Nefrología: Riñones. Reumatología: Enfermedades del sistema musculoesquelético y autoinmunes (ej. artritis).",
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6455),
-                            IsActive = true,
-                            IsDeleted = false,
-                            Nombre = "Medicina Interna"
-                        },
-                        new
-                        {
-                            IdEspecialidad = 2,
-                            Descripcion = "Cuidado de la salud de bebés, niños y adolescentes.",
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6456),
-                            IsActive = true,
-                            IsDeleted = false,
-                            Nombre = "Pediatria"
-                        },
-                        new
-                        {
-                            IdEspecialidad = 3,
-                            Descripcion = "Ofrece atención médica integral y continua para personas de todas las edades. Son el primer punto de contacto del sistema de salud.",
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6458),
-                            IsActive = true,
-                            IsDeleted = false,
-                            Nombre = "Medicina Familiar y General"
-                        },
-                        new
-                        {
-                            IdEspecialidad = 4,
-                            Descripcion = "Cuidado de la salud en personas de la tercera edad.",
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6459),
-                            IsActive = true,
-                            IsDeleted = false,
-                            Nombre = "Geriatría"
-                        });
                 });
 
             modelBuilder.Entity("SaludGestREST.Data.Models.InventarioMedicamento", b =>
@@ -660,7 +625,7 @@ namespace SaludGestREST.Data.Migrations
                             InventarioMedId = 1,
                             Cantidad = 10,
                             CentroId = 1,
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6437),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(873),
                             IsActive = true,
                             IsDeleted = false,
                             MedicamentoId = 1,
@@ -671,7 +636,7 @@ namespace SaludGestREST.Data.Migrations
                             InventarioMedId = 2,
                             Cantidad = 10,
                             CentroId = 2,
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6439),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(880),
                             IsActive = true,
                             IsDeleted = false,
                             MedicamentoId = 2,
@@ -721,7 +686,7 @@ namespace SaludGestREST.Data.Migrations
                         {
                             MedicamentoId = 1,
                             Codigo = "234r324",
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6353),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(748),
                             IsActive = true,
                             IsDeleted = false,
                             Lote = "1234457",
@@ -732,7 +697,7 @@ namespace SaludGestREST.Data.Migrations
                         {
                             MedicamentoId = 2,
                             Codigo = "23324",
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6355),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(751),
                             IsActive = true,
                             IsDeleted = false,
                             Lote = "12344",
@@ -805,7 +770,7 @@ namespace SaludGestREST.Data.Migrations
                             CentroMedicoId = 1,
                             Email = "laura.gonzalez@hospital.com",
                             EspecialidadId = 1,
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6295),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(705),
                             IsActive = true,
                             IsDeleted = false,
                             Matricula = "MED001",
@@ -820,7 +785,7 @@ namespace SaludGestREST.Data.Migrations
                             CentroMedicoId = 1,
                             Email = "carlos.martinez@hospital.com",
                             EspecialidadId = 2,
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6298),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(710),
                             IsActive = true,
                             IsDeleted = false,
                             Matricula = "MED002",
@@ -835,7 +800,7 @@ namespace SaludGestREST.Data.Migrations
                             CentroMedicoId = 2,
                             Email = "ana.hernandez@hospital.com",
                             EspecialidadId = 3,
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6300),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(714),
                             IsActive = true,
                             IsDeleted = false,
                             Matricula = "MED003",
@@ -898,8 +863,8 @@ namespace SaludGestREST.Data.Migrations
                             ApMaterno = "Velasco",
                             ApPaterno = "Hernandez",
                             Email = "ejemplo@test.com",
-                            FechaNacimiento = new DateTime(1989, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6381),
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6376),
+                            FechaNacimiento = new DateTime(1989, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(789),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(782),
                             IsActive = true,
                             IsDeleted = false,
                             Nombre = "Sergio",
@@ -912,8 +877,8 @@ namespace SaludGestREST.Data.Migrations
                             ApMaterno = "Sanchez",
                             ApPaterno = "Ildefonso",
                             Email = "ejemplo@test.com",
-                            FechaNacimiento = new DateTime(2003, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6389),
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6387),
+                            FechaNacimiento = new DateTime(2003, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(798),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(796),
                             IsActive = true,
                             IsDeleted = false,
                             Nombre = "Angel",
@@ -926,8 +891,8 @@ namespace SaludGestREST.Data.Migrations
                             ApMaterno = "Castillo",
                             ApPaterno = "Sapiens",
                             Email = "ejemplo@test.com",
-                            FechaNacimiento = new DateTime(2001, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6392),
-                            HighSystem = new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6390),
+                            FechaNacimiento = new DateTime(2001, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(802),
+                            HighSystem = new DateTime(2025, 8, 21, 8, 45, 16, 854, DateTimeKind.Local).AddTicks(800),
                             IsActive = true,
                             IsDeleted = false,
                             Nombre = "Roberto",
