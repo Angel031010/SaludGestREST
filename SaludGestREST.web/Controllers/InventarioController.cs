@@ -9,7 +9,7 @@ namespace SaludGestREST.web.Controllers
 {
     [Route("inventario")]
     [ApiController]
-    [Authorize(Roles = "Medico")]
+    //[Authorize(Roles = "Medico")]
     public class InventarioController : ControllerBase
     {
         private readonly IInventarioService _inventarioService;

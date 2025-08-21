@@ -53,10 +53,10 @@ namespace SaludGestREST.web.Controllers
                 return BadRequest(new { message = $"Hubo un error al crear la especialidad: {ex.Message}" });
             }
         }
-        [HttpPut("{MedicoId}")]
-        public async Task<IActionResult> Update(int medicoId, [FromBody] MedicoUpdateDTO medicoUpdateDTO)
+        [HttpPut("{Id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] MedicoUpdateDTO medicoUpdateDTO)
         {
-            if (medicoId != medicoUpdateDTO.MedicoId)
+            if (id != medicoUpdateDTO.MedicoId)
             {
                 return BadRequest(new { message = "El ID de la ruta no coincide con el ID de la especialidad" }); // Respuesta HTTP 400 Bad Request con un mensaje.
             }
@@ -67,7 +67,7 @@ namespace SaludGestREST.web.Controllers
             //    return BadRequest(ModelState);  // Retorna 400
             //}
 
-            var existingMedico = await _medicoService.GetByIdAsync(medicoId);
+            var existingMedico = await _medicoService.GetByIdAsync(id);
             if (existingMedico == null)
             {
                 return NotFound(new { message = "Medico no encontrado" });    // Respuesta HTTP 404 Not Found con un mensaje.
@@ -75,7 +75,7 @@ namespace SaludGestREST.web.Controllers
 
             try
             {
-                await _medicoService.UpdateAsync(medicoId, medicoUpdateDTO);
+                await _medicoService.UpdateAsync(id, medicoUpdateDTO);
 
                 return NoContent();                                             // Retorna 204 No Content para indicar que la operación fue exitosa.
             }
@@ -85,18 +85,18 @@ namespace SaludGestREST.web.Controllers
             }
         }
 
-        [HttpDelete("{MedicoId}")]
-        public async Task<IActionResult> Delete(int MedicoId)
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                var existingMedico = await _medicoService.GetByIdAsync(MedicoId);
+                var existingMedico = await _medicoService.GetByIdAsync(id);
                 if (existingMedico == null)
                 {
                     return NotFound(new { message = "Medico no encontrado" });    // Respuesta HTTP 404 Not Found con un mensaje.
                 }
 
-                await _medicoService.DeleteAsync(MedicoId);
+                await _medicoService.DeleteAsync(id);
 
                 return NoContent();  
             }

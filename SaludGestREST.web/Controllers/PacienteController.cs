@@ -10,7 +10,7 @@ namespace SaludGestREST.web.Controllers
 {
     [Route("api/v1/pacientes")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class PacienteController : ControllerBase
     {
         private readonly IPacienteService _servicePaciente;
