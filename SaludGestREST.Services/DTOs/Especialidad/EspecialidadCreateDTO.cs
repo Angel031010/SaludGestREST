@@ -12,7 +12,6 @@ namespace SaludGestREST.Services.DTOs.Especialidad
         [Display(Name = "Nombre")]
         [Required(ErrorMessage = "El valor es requerido")]
         public string Nombre { get; set; }
-
         [Display(Name = "Descripcion")]
         [Required(ErrorMessage = "El valor es requerido")]
         public string Descripcion { get; set; }
