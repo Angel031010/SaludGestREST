@@ -13,7 +13,15 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
-
+// Agregar servicios CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp",
+        builder => builder
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
 //Configuracion serilog usar Syslog Telemetry
 var betterStack = builder.Configuration.GetValue<string>("BetterStack");
 var EndPoint = builder.Configuration.GetValue<string>("Telemetry:host");
@@ -99,6 +107,8 @@ builder.Services.Configure<UploadSettings>(builder.Configuration.GetSection("Upl
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 #endregion
 var app = builder.Build();
+// Usar CORS
+app.UseCors("AllowAngularApp");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
