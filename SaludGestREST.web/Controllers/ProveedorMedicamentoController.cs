@@ -3,17 +3,18 @@ using Microsoft.AspNetCore.Mvc;
 using SaludGestREST.Services.Constants;
 using SaludGestREST.Services.DTOs.CentroMedico;
 using SaludGestREST.Services.DTOs.ProveedorMedicamento;
+using SaludGestREST.Services.Services.Implementations;
 using SaludGestREST.Services.Services.Interfaces;
 
 namespace SaludGestREST.web.Controllers
 {
-    [Route("api/v1/centrosMedicos")]
+    [Microsoft.AspNetCore.Components.Route("api/v1/centrosMedicos")]
     [ApiController]
     public class ProveedorMedicamentoController : ControllerBase
     {
-        private readonly IProveedorMedicamentoService _serviceProveedor;
+        private readonly ProveedorMedicamentoService _serviceProveedor;
     
-            public ProveedorMedicamentoController(IProveedorMedicamentoService service)
+            public ProveedorMedicamentoController(ProveedorMedicamentoService service)
             {
                 _serviceProveedor = service;
             }

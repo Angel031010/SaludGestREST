@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace SaludGestREST.Services.Services.Implementations
 {
-    public class ProveedorMedicamentoService : IProveedorMedicamentoService
+    public class ProveedorMedicamentoService : IProveedorMedicamento
     {
         private readonly ApplicationDbContext _context;
 
