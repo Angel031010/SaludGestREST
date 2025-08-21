@@ -9,7 +9,6 @@ namespace SaludGestREST.Services.DTOs.ProveedorMedicamento
 {
     public class ProveedorMedicamentoCreateDTO:RegistryDTO
     {
-        public int ProveedorMedicamentoId { get; set; }
         [Display(Name = "Nombre")]
         [Required(ErrorMessage = "El valor es requerido")]
         public string Nombre { get; set; }

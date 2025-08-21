@@ -32,7 +32,6 @@ namespace SaludGestREST.Services.Services.Implementations
             };
             await _context.AddAsync(proveedormedicamento);
             await _context.SaveChangesAsync();
-            dto.ProveedorMedicamentoId = proveedormedicamento.ProveedorId;
         }
         public async Task DeleteAsync(int id)
         {
