@@ -20,6 +20,7 @@ namespace SaludGestREST.Data
         public DbSet<ContactoPaciente> ContactosPacientes { get; set; }
         public DbSet<InventarioMedicamento> InventarioMedico { get; set; }
         public DbSet<Medico> Medicos { get; set; }
+        public DbSet<Cita> Citas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -226,6 +227,62 @@ namespace SaludGestREST.Data
                     Minimo = 5
                 }
                 );
+
+            // Desactivar cascada para Cita -> Medico
+            modelBuilder.Entity<Cita>()
+                .HasOne(c => c.Medico)
+                .WithMany()
+                .HasForeignKey(c => c.MedicoId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Desactivar cascada para Cita -> Paciente
+            modelBuilder.Entity<Cita>()
+                .HasOne(c => c.Paciente)
+                .WithMany()
+                .HasForeignKey(c => c.PacienteId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Desactivar cascada para Cita -> CentroMedico
+            modelBuilder.Entity<Cita>()
+                .HasOne(c => c.CentroMedico)
+                .WithMany()
+                .HasForeignKey(c => c.CentroMedicoId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Cita>().HasData(
+                new Cita
+                {
+                    CitaId = 1,
+                    PacienteId = 1,
+                    MedicoId = 1,
+                    CentroMedicoId = 1,
+                    FechaHora = DateTime.Now.AddDays(1).AddHours(10), // Mañana a las 10am
+                    DuracionMinutos = 30.00m,
+                    Motivo = "Consulta general"
+                },
+                new Cita
+                {
+                    CitaId = 2,
+                    PacienteId = 2,
+                    MedicoId = 2,
+                    CentroMedicoId = 1,
+                    FechaHora = DateTime.Now.AddDays(2).AddHours(15), // Pasado mañana a las 3pm
+                    DuracionMinutos = 45.50m,
+                    Motivo = "Revisión de análisis clínicos"
+                },
+                new Cita
+                {
+                    CitaId = 3,
+                    PacienteId = 3,
+                    MedicoId = 3,
+                    CentroMedicoId = 2,
+                    FechaHora = DateTime.Now.AddDays(3).AddHours(9), // En tres días a las 9am
+                    DuracionMinutos = 60.00m,
+                    Motivo = "Consulta especializada"
+                }
+            );
+
+
             #region Usuario
             //Definir IDs unicos
             var userId = Guid.NewGuid().ToString();
