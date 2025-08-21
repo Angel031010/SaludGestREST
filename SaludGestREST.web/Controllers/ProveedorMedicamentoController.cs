@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SaludGestREST.Services.Constants;
 using SaludGestREST.Services.DTOs.CentroMedico;
 using SaludGestREST.Services.DTOs.ProveedorMedicamento;
@@ -8,7 +7,7 @@ using SaludGestREST.Services.Services.Interfaces;
 
 namespace SaludGestREST.web.Controllers
 {
-    [Microsoft.AspNetCore.Components.Route("api/v1/centrosMedicos")]
+    [Route("api/v1/provedorMedicamento")]
     [ApiController]
     public class ProveedorMedicamentoController : ControllerBase
     {

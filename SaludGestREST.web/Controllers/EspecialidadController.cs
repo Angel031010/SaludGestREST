@@ -58,10 +58,10 @@ namespace SaludGestREST.web.Controllers
                 return BadRequest(new { message = $"Hubo un error al crear la especialidad: {ex.Message}" });   // Retorna 400 Bad Request con un mensaje de error.
             }
         }
-        [HttpPut("{idEspecialidad}")]
-        public async Task<IActionResult> Update(int idEspecialidad, [FromBody] EspecialidadUpdateDTO especialidadDTO)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] EspecialidadUpdateDTO especialidadDTO)
         {
-            if (idEspecialidad != especialidadDTO.IdEspecialidad)
+            if (id != especialidadDTO.IdEspecialidad)
             {
                 return BadRequest(new { message = "El ID de la ruta no coincide con el ID de la especialidad" }); // Respuesta HTTP 400 Bad Request con un mensaje.
             }
@@ -72,7 +72,7 @@ namespace SaludGestREST.web.Controllers
             //    return BadRequest(ModelState);  // Retorna 400
             //}
 
-            var existingProduct = await _especialidadService.GetByIdAsync(idEspecialidad);
+            var existingProduct = await _especialidadService.GetByIdAsync(id);
             if (existingProduct == null)
             {
                 return NotFound(new { message = "Producto no encontrado" });    // Respuesta HTTP 404 Not Found con un mensaje.
@@ -80,7 +80,7 @@ namespace SaludGestREST.web.Controllers
 
             try
             {
-                await _especialidadService.UpdateAsync(idEspecialidad, especialidadDTO);
+                await _especialidadService.UpdateAsync(id, especialidadDTO);
 
                 return NoContent();                                             // Retorna 204 No Content para indicar que la operación fue exitosa.
             }
@@ -90,18 +90,18 @@ namespace SaludGestREST.web.Controllers
             }
         }
 
-        [HttpDelete("{idEspecialidad}")]
-        public async Task<IActionResult> Delete(int idEspecialidad)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                var existingEspecialidad = await _especialidadService.GetByIdAsync(idEspecialidad);
+                var existingEspecialidad = await _especialidadService.GetByIdAsync(id);
                 if (existingEspecialidad == null)
                 {
                     return NotFound(new { message = "Especialidad no encontrado" });    // Respuesta HTTP 404 Not Found con un mensaje.
                 }
 
-                await _especialidadService.DeleteAsync(idEspecialidad);
+                await _especialidadService.DeleteAsync(id);
 
                 return NoContent();                                                 // Retorna 204 No Content para indicar que la operación fue exitosa.
             }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SaludGestREST.Services.Services.Interfaces
 {
-    public interface IProveedorMedicamento : IGenericService<ProveedorMedicamentoCreateDTO, ProveedorMedicamentoReadDTO, ProveedorMedicamentoUpdateDTO>
+    public interface IProveedorMedicamentoService : IGenericService<ProveedorMedicamentoCreateDTO, ProveedorMedicamentoReadDTO, ProveedorMedicamentoUpdateDTO>
     {
 
     }

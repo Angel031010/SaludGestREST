@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SaludGestREST.Data.Models;
+using static SaludGestREST.Data.Commons.Enums;
 
 namespace SaludGestREST.Data
 {
@@ -21,6 +21,7 @@ namespace SaludGestREST.Data
         public DbSet<ContactoPaciente> ContactosPacientes { get; set; }
         public DbSet<InventarioMedicamento> InventarioMedico { get; set; }
         public DbSet<Medico> Medicos { get; set; }
+        public DbSet<Cita> Citas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -67,6 +68,56 @@ namespace SaludGestREST.Data
                     HighSystem = DateTime.Now
                 }
             );
+
+            modelBuilder.Entity<Medico>().HasData(
+                new Medico
+                {
+                    MedicoId = 1,
+                    Nombre = "Laura",
+                    ApPaterno = "González",
+                    ApMaterno = "Ramírez",
+                    Matricula = "MED001",
+                    Telefono = "5551002000",
+                    Email = "laura.gonzalez@hospital.com",
+                    EspecialidadId = 1,
+                    CentroMedicoId = 1,
+                    IsActive = true,
+                    IsDeleted = false,
+                    HighSystem = DateTime.Now
+                },
+                new Medico
+                {
+                    MedicoId = 2,
+                    Nombre = "Carlos",
+                    ApPaterno = "Martínez",
+                    ApMaterno = "López",
+                    Matricula = "MED002",
+                    Telefono = "5552003000",
+                    Email = "carlos.martinez@hospital.com",
+                    EspecialidadId = 2,
+                    CentroMedicoId = 1,
+                    IsActive = true,
+                    IsDeleted = false,
+                    HighSystem = DateTime.Now
+                },
+                new Medico
+                {
+                    MedicoId = 3,
+                    Nombre = "Ana",
+                    ApPaterno = "Hernández",
+                    ApMaterno = "Torres",
+                    Matricula = "MED003",
+                    Telefono = "5553004000",
+                    Email = "ana.hernandez@hospital.com",
+                    EspecialidadId = 3,
+                    CentroMedicoId = 2,
+                    IsActive = true,
+                    IsDeleted = false,
+                    HighSystem = DateTime.Now
+                }
+            );
+
+
             modelBuilder.Entity<Medicamento>().HasData(
                 new Medicamento
                 {
@@ -119,7 +170,46 @@ namespace SaludGestREST.Data
                     Email = "ejemplo@test.com",
                     FechaNacimiento = DateTime.Now.AddYears(-24)
                 }
-                );
+            );
+
+
+            modelBuilder.Entity<ContactoPaciente>().HasData(
+                new ContactoPaciente
+                {
+                    ContactoPacienteId = 1,
+                    PacienteId = 1,
+                    TipoContacto = TipoContactoPaciente.Emergencia,
+                    Calle = "Av. Reforma 123",
+                    Ciudad = "CDMX",
+                    Estado = "CDMX",
+                    CodigoPostal = "06000",
+                    Telefono = "557511785"
+                },
+                new ContactoPaciente
+                {
+                    ContactoPacienteId = 2,
+                    PacienteId = 2,
+                    TipoContacto = TipoContactoPaciente.Familiar,
+                    Calle = "Calle Juárez 456",
+                    Ciudad = "Puebla",
+                    Estado = "Puebla",
+                    CodigoPostal = "72000",
+                    Telefono = "557486785"
+                },
+                new ContactoPaciente
+                {
+                    ContactoPacienteId = 3,
+                    PacienteId = 3,
+                    TipoContacto = TipoContactoPaciente.Amigo,
+                    Calle = "Calle Hidalgo 789",
+                    Ciudad = "Toluca",
+                    Estado = "Edo. México",
+                    CodigoPostal = "50000",
+                    Telefono = "5632111785"
+                }
+            );
+
+
             modelBuilder.Entity<InventarioMedicamento>().HasData(
                 new InventarioMedicamento
                 {
@@ -138,6 +228,65 @@ namespace SaludGestREST.Data
                     Minimo = 5
                 }
                 );
+
+            // Desactivar cascada para Cita -> Medico
+            modelBuilder.Entity<Cita>()
+                .HasOne(c => c.Medico)
+                .WithMany()
+                .HasForeignKey(c => c.MedicoId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Desactivar cascada para Cita -> Paciente
+            modelBuilder.Entity<Cita>()
+                .HasOne(c => c.Paciente)
+                .WithMany()
+                .HasForeignKey(c => c.PacienteId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Desactivar cascada para Cita -> CentroMedico
+            modelBuilder.Entity<Cita>()
+                .HasOne(c => c.CentroMedico)
+                .WithMany()
+                .HasForeignKey(c => c.CentroMedicoId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Cita>().HasData(
+                new Cita
+                {
+                    CitaId = 1,
+                    PacienteId = 1,
+                    MedicoId = 1,
+                    CentroMedicoId = 1,
+                    FechaHora = DateTime.Now.AddDays(1).AddHours(10), // Mañana a las 10am
+                    DuracionMinutos = 30.00m,
+                    Motivo = "Consulta general"
+                },
+                new Cita
+                {
+                    CitaId = 2,
+                    PacienteId = 2,
+                    MedicoId = 2,
+                    CentroMedicoId = 1,
+                    FechaHora = DateTime.Now.AddDays(2).AddHours(15), // Pasado mañana a las 3pm
+                    DuracionMinutos = 45.50m,
+                    Motivo = "Revisión de análisis clínicos"
+                },
+                new Cita
+                {
+                    CitaId = 3,
+                    PacienteId = 3,
+                    MedicoId = 3,
+                    CentroMedicoId = 2,
+                    FechaHora = DateTime.Now.AddDays(3).AddHours(9), // En tres días a las 9am
+                    DuracionMinutos = 60.00m,
+                    Motivo = "Consulta especializada"
+                }
+            );
+
+            modelBuilder.Entity<ProveedorMedicamento>()
+            .HasKey(p => p.ProveedorId);
+
+
             #region Usuario
             //Definir IDs unicos
             var userId = Guid.NewGuid().ToString();
