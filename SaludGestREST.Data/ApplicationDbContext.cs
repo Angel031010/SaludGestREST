@@ -229,6 +229,38 @@ namespace SaludGestREST.Data
                 }
                 );
 
+            modelBuilder.Entity<Especialidad>().HasData(
+                new Especialidad
+                {
+                    IdEspecialidad = 1,
+                    Nombre = "Medicina Interna",
+                    Descripcion = "Cardiología: Corazón y sistema circulatorio. Endocrinología: Enfermedades hormonales y del metabolismo (ej. diabetes, tiroides). Gastroenterología: Sistema digestivo (estómago, intestinos, hígado). Neumología: Pulmones y sistema respiratorio. Nefrología: Riñones. Reumatología: Enfermedades del sistema musculoesquelético y autoinmunes (ej. artritis).",
+                    IsActive = true,
+                    HighSystem = DateTime.Now
+                },
+                new Especialidad
+                {
+                    IdEspecialidad = 2,
+                    Nombre = "Pediatria",
+                    Descripcion = "Cuidado de la salud de bebés, niños y adolescentes.",
+                    IsActive = true,
+                    HighSystem = DateTime.Now
+                }, new Especialidad
+                {
+                    IdEspecialidad = 3,
+                    Nombre = "Medicina Familiar y General",
+                    Descripcion = "Ofrece atención médica integral y continua para personas de todas las edades. Son el primer punto de contacto del sistema de salud.",
+                    IsActive = true,
+                    HighSystem = DateTime.Now
+                }, new Especialidad
+                {
+                    IdEspecialidad = 4,
+                    Nombre = "Geriatría",
+                    Descripcion = "Cuidado de la salud en personas de la tercera edad.",
+                    IsActive = true,
+                    HighSystem = DateTime.Now
+                });
+
             // Desactivar cascada para Cita -> Medico
             modelBuilder.Entity<Cita>()
                 .HasOne(c => c.Medico)

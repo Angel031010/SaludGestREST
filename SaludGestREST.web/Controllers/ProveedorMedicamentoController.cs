@@ -11,9 +11,9 @@ namespace SaludGestREST.web.Controllers
     [ApiController]
     public class ProveedorMedicamentoController : ControllerBase
     {
-        private readonly ProveedorMedicamentoService _serviceProveedor;
+        private readonly IProveedorMedicamentoService _serviceProveedor;
     
-            public ProveedorMedicamentoController(ProveedorMedicamentoService service)
+            public ProveedorMedicamentoController(IProveedorMedicamentoService service)
             {
                 _serviceProveedor = service;
             }
