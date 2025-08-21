@@ -283,6 +283,9 @@ namespace SaludGestREST.Data
                 }
             );
 
+            modelBuilder.Entity<ProveedorMedicamento>()
+            .HasKey(p => p.ProveedorId);
+
 
             #region Usuario
             //Definir IDs unicos

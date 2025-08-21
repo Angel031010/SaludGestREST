@@ -113,6 +113,7 @@ builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IMedicoService, MedicoService>();
 builder.Services.AddScoped<IContactoPacienteService, ContactoPacienteService>();
 builder.Services.AddScoped<ICitaService, CitaService>();
+builder.Services.AddScoped<IProveedorMedicamentoService, ProveedorMedicamentoService>();
 #endregion
 
 #region Settings
