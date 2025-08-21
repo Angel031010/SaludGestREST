@@ -77,7 +77,7 @@ namespace SaludGestREST.Data.Migrations
                 name: "Especialidades",
                 columns: table => new
                 {
-                    IdEspecialidad = table.Column<int>(type: "int", nullable: false)
+                    EspecialidadId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -87,7 +87,7 @@ namespace SaludGestREST.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Especialidades", x => x.IdEspecialidad);
+                    table.PrimaryKey("PK_Especialidades", x => x.EspecialidadId);
                 });
 
             migrationBuilder.CreateTable(
@@ -287,7 +287,7 @@ namespace SaludGestREST.Data.Migrations
                         name: "FK_Medicos_Especialidades_EspecialidadId",
                         column: x => x.EspecialidadId,
                         principalTable: "Especialidades",
-                        principalColumn: "IdEspecialidad",
+                        principalColumn: "EspecialidadId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -394,8 +394,8 @@ namespace SaludGestREST.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "45bface9-f451-446d-8ed6-593d0b57d5c0", null, "Medico", "Medico" },
-                    { "de998643-c81b-4090-8440-ebefd507cb19", null, "Admin", "ADMIN" }
+                    { "2d415af0-7e1e-4610-99bc-bc3ecf609a93", null, "Admin", "ADMIN" },
+                    { "39fa7488-27b6-48a3-99b3-f775304ac78a", null, "Medico", "Medico" }
                 });
 
             migrationBuilder.InsertData(
@@ -403,8 +403,8 @@ namespace SaludGestREST.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "9838db50-8576-4da9-b1bf-63ccb69ff726", 0, "44fedd4d-e2ec-4dbd-bea4-08fc65551fba", "admin@test.com", true, false, null, "ADMIN@TEST.COM", "ADMIN@TEST.COM", "AQAAAAIAAYagAAAAEF6haJ4eSjTyFZ/n/D42VDAM/vlPPN/PPmGugyGO60RQBJUT30dgb6vZmSzSxrO01A==", null, false, "3f949376-3349-4ec7-b4ee-8828d2dd9e18", false, "admin@test.com" },
-                    { "a845337b-9e1f-42d4-b086-589cc974dfa4", 0, "47243c2d-9f45-4229-8c55-3b377aa46595", "medico@test.com", true, false, null, "MEDICO@TEST.COM", "MEDICO@TEST.COM", "AQAAAAIAAYagAAAAEAyaesaQ5+FfQ29y1+eEnwKKKZbWafwzXcKVnWYbuFnYkSv3c5WzcNY8Y7nvx8LSBw==", null, false, "ba4bfce2-06d4-4e9a-93bd-18879bebcfdb", false, "medico@test.com" }
+                    { "912868c9-2aee-4eb4-94db-8ad57ab53bb2", 0, "5bb4daec-7047-4aa6-b3a6-4573ae3a9665", "admin@test.com", true, false, null, "ADMIN@TEST.COM", "ADMIN@TEST.COM", "AQAAAAIAAYagAAAAENp0YttXEAQR8ILhh1DNH4hjPhhRuZqHRPxrB2BP45Riba9EIMqhtNi0d30N4XrwHg==", null, false, "efd12b25-260d-4232-82df-0f5c3a5aea80", false, "admin@test.com" },
+                    { "bb3618ef-5e5c-4e69-943c-befd56351dd9", 0, "89cdf372-e574-40e4-9b83-7781aa6c047e", "medico@test.com", true, false, null, "MEDICO@TEST.COM", "MEDICO@TEST.COM", "AQAAAAIAAYagAAAAEI+A1xDc9D9af74ktUfQZgxjN2LHKRLPJNXrvitaEq+pz4taJ1etiCUGcLdm8IHaIw==", null, false, "508b222b-1c8e-4a8f-bc53-6489086aedcd", false, "medico@test.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -412,20 +412,20 @@ namespace SaludGestREST.Data.Migrations
                 columns: new[] { "CentroMedicoId", "Codigo", "Direccion", "Email", "HighSystem", "ImagenUrl", "IsActive", "IsDeleted", "Nombre", "Telefono" },
                 values: new object[,]
                 {
-                    { 1, "CMP001", "Av. Reforma 123, Puebla, PUE", "contacto@cmpuebla.com", new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6037), "/Uploads/centroMedico.jpg", true, false, "Centro Médico Puebla", "222-123-4567" },
-                    { 2, "CM002", "Calle Juárez 456, CDMX", "info@clinicametropolitana.com", new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6041), "/Uploads/hospitalAngelopolitano.jpg", true, false, "Clínica Metropolitana", "55-9876-5432" },
-                    { 3, "HV003", "Av. Universidad 789, Guadalajara, JAL", "hospital@delvalle.com", new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6043), "/Uploads/Valle.jpg", true, false, "Hospital del Valle", "33-4567-8910" }
+                    { 1, "CMP001", "Av. Reforma 123, Puebla, PUE", "contacto@cmpuebla.com", new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(1828), "/Uploads/centroMedico.jpg", true, false, "Centro Médico Puebla", "222-123-4567" },
+                    { 2, "CM002", "Calle Juárez 456, CDMX", "info@clinicametropolitana.com", new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(1832), "/Uploads/hospitalAngelopolitano.jpg", true, false, "Clínica Metropolitana", "55-9876-5432" },
+                    { 3, "HV003", "Av. Universidad 789, Guadalajara, JAL", "hospital@delvalle.com", new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(1836), "/Uploads/Valle.jpg", true, false, "Hospital del Valle", "33-4567-8910" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Especialidades",
-                columns: new[] { "IdEspecialidad", "Descripcion", "HighSystem", "IsActive", "IsDeleted", "Nombre" },
+                columns: new[] { "EspecialidadId", "Descripcion", "HighSystem", "IsActive", "IsDeleted", "Nombre" },
                 values: new object[,]
                 {
-                    { 1, "Cardiología: Corazón y sistema circulatorio. Endocrinología: Enfermedades hormonales y del metabolismo (ej. diabetes, tiroides). Gastroenterología: Sistema digestivo (estómago, intestinos, hígado). Neumología: Pulmones y sistema respiratorio. Nefrología: Riñones. Reumatología: Enfermedades del sistema musculoesquelético y autoinmunes (ej. artritis).", new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6455), true, false, "Medicina Interna" },
-                    { 2, "Cuidado de la salud de bebés, niños y adolescentes.", new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6456), true, false, "Pediatria" },
-                    { 3, "Ofrece atención médica integral y continua para personas de todas las edades. Son el primer punto de contacto del sistema de salud.", new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6458), true, false, "Medicina Familiar y General" },
-                    { 4, "Cuidado de la salud en personas de la tercera edad.", new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6459), true, false, "Geriatría" }
+                    { 1, "Cardiología: Corazón y sistema circulatorio. Endocrinología: Enfermedades hormonales y del metabolismo (ej. diabetes, tiroides). Gastroenterología: Sistema digestivo (estómago, intestinos, hígado). Neumología: Pulmones y sistema respiratorio. Nefrología: Riñones. Reumatología: Enfermedades del sistema musculoesquelético y autoinmunes (ej. artritis).", new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2574), true, false, "Medicina Interna" },
+                    { 2, "Cuidado de la salud de bebés, niños y adolescentes.", new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2577), true, false, "Pediatria" },
+                    { 3, "Ofrece atención médica integral y continua para personas de todas las edades. Son el primer punto de contacto del sistema de salud.", new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2580), true, false, "Medicina Familiar y General" },
+                    { 4, "Cuidado de la salud en personas de la tercera edad.", new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2582), true, false, "Geriatría" }
                 });
 
             migrationBuilder.InsertData(
@@ -433,8 +433,8 @@ namespace SaludGestREST.Data.Migrations
                 columns: new[] { "MedicamentoId", "Codigo", "HighSystem", "IsActive", "IsDeleted", "Lote", "Nombre", "Sustancia" },
                 values: new object[,]
                 {
-                    { 1, "234r324", new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6353), true, false, "1234457", "Rosel", "Paracetamol" },
-                    { 2, "23324", new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6355), true, false, "12344", "Neomelubrina", "Parace" }
+                    { 1, "234r324", new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2363), true, false, "1234457", "Rosel", "Paracetamol" },
+                    { 2, "23324", new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2367), true, false, "12344", "Neomelubrina", "Parace" }
                 });
 
             migrationBuilder.InsertData(
@@ -442,9 +442,9 @@ namespace SaludGestREST.Data.Migrations
                 columns: new[] { "PacienteId", "ApMaterno", "ApPaterno", "Email", "FechaNacimiento", "HighSystem", "IsActive", "IsDeleted", "Nombre", "Telefono", "UrlFoto" },
                 values: new object[,]
                 {
-                    { 1, "Velasco", "Hernandez", "ejemplo@test.com", new DateTime(1989, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6381), new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6376), true, false, "Sergio", 557511785m, "/default.jpg" },
-                    { 2, "Sanchez", "Ildefonso", "ejemplo@test.com", new DateTime(2003, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6389), new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6387), true, false, "Angel", 557486785m, "/default.jpg" },
-                    { 3, "Castillo", "Sapiens", "ejemplo@test.com", new DateTime(2001, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6392), new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6390), true, false, "Roberto", 5632111785m, "/default.jpg" }
+                    { 1, "Velasco", "Hernandez", "ejemplo@test.com", new DateTime(1989, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2413), new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2408), true, false, "Sergio", 557511785m, "/default.jpg" },
+                    { 2, "Sanchez", "Ildefonso", "ejemplo@test.com", new DateTime(2003, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2425), new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2423), true, false, "Angel", 557486785m, "/default.jpg" },
+                    { 3, "Castillo", "Sapiens", "ejemplo@test.com", new DateTime(2001, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2429), new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2426), true, false, "Roberto", 5632111785m, "/default.jpg" }
                 });
 
             migrationBuilder.InsertData(
@@ -452,8 +452,8 @@ namespace SaludGestREST.Data.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "de998643-c81b-4090-8440-ebefd507cb19", "9838db50-8576-4da9-b1bf-63ccb69ff726" },
-                    { "45bface9-f451-446d-8ed6-593d0b57d5c0", "a845337b-9e1f-42d4-b086-589cc974dfa4" }
+                    { "2d415af0-7e1e-4610-99bc-bc3ecf609a93", "912868c9-2aee-4eb4-94db-8ad57ab53bb2" },
+                    { "39fa7488-27b6-48a3-99b3-f775304ac78a", "bb3618ef-5e5c-4e69-943c-befd56351dd9" }
                 });
 
             migrationBuilder.InsertData(
@@ -461,9 +461,9 @@ namespace SaludGestREST.Data.Migrations
                 columns: new[] { "ContactoPacienteId", "Calle", "Ciudad", "CodigoPostal", "Estado", "HighSystem", "IsActive", "IsDeleted", "PacienteId", "Telefono", "TipoContacto" },
                 values: new object[,]
                 {
-                    { 1, "Av. Reforma 123", "CDMX", "06000", "CDMX", new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6411), true, false, 1, "557511785", 0 },
-                    { 2, "Calle Juárez 456", "Puebla", "72000", "Puebla", new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6416), true, false, 2, "557486785", 1 },
-                    { 3, "Calle Hidalgo 789", "Toluca", "50000", "Edo. México", new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6417), true, false, 3, "5632111785", 2 }
+                    { 1, "Av. Reforma 123", "CDMX", "06000", "CDMX", new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2477), true, false, 1, "557511785", 0 },
+                    { 2, "Calle Juárez 456", "Puebla", "72000", "Puebla", new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2484), true, false, 2, "557486785", 1 },
+                    { 3, "Calle Hidalgo 789", "Toluca", "50000", "Edo. México", new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2487), true, false, 3, "5632111785", 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -471,8 +471,8 @@ namespace SaludGestREST.Data.Migrations
                 columns: new[] { "InventarioMedId", "Cantidad", "CentroId", "HighSystem", "IsActive", "IsDeleted", "MedicamentoId", "Minimo" },
                 values: new object[,]
                 {
-                    { 1, 10, 1, new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6437), true, false, 1, 5 },
-                    { 2, 10, 2, new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6439), true, false, 2, 5 }
+                    { 1, 10, 1, new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2531), true, false, 1, 5 },
+                    { 2, 10, 2, new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2534), true, false, 2, 5 }
                 });
 
             migrationBuilder.InsertData(
@@ -480,9 +480,9 @@ namespace SaludGestREST.Data.Migrations
                 columns: new[] { "MedicoId", "ApMaterno", "ApPaterno", "CentroMedicoId", "Email", "EspecialidadId", "HighSystem", "IsActive", "IsDeleted", "Matricula", "Nombre", "Telefono" },
                 values: new object[,]
                 {
-                    { 1, "Ramírez", "González", 1, "laura.gonzalez@hospital.com", 1, new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6295), true, false, "MED001", "Laura", "5551002000" },
-                    { 2, "López", "Martínez", 1, "carlos.martinez@hospital.com", 2, new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6298), true, false, "MED002", "Carlos", "5552003000" },
-                    { 3, "Torres", "Hernández", 2, "ana.hernandez@hospital.com", 3, new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(6300), true, false, "MED003", "Ana", "5553004000" }
+                    { 1, "Ramírez", "González", 1, "laura.gonzalez@hospital.com", 1, new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2311), true, false, "MED001", "Laura", "5551002000" },
+                    { 2, "López", "Martínez", 1, "carlos.martinez@hospital.com", 2, new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2318), true, false, "MED002", "Carlos", "5552003000" },
+                    { 3, "Torres", "Hernández", 2, "ana.hernandez@hospital.com", 3, new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(2322), true, false, "MED003", "Ana", "5553004000" }
                 });
 
             migrationBuilder.InsertData(
@@ -490,9 +490,9 @@ namespace SaludGestREST.Data.Migrations
                 columns: new[] { "CitaId", "CentroMedicoId", "DuracionMinutos", "FechaHora", "HighSystem", "IsActive", "IsDeleted", "MedicoId", "Motivo", "PacienteId" },
                 values: new object[,]
                 {
-                    { 1, 1, 30.00m, new DateTime(2025, 8, 22, 19, 12, 53, 596, DateTimeKind.Local).AddTicks(9599), new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(9595), true, false, 1, "Consulta general", 1 },
-                    { 2, 1, 45.50m, new DateTime(2025, 8, 24, 0, 12, 53, 596, DateTimeKind.Local).AddTicks(9607), new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(9606), true, false, 2, "Revisión de análisis clínicos", 2 },
-                    { 3, 2, 60.00m, new DateTime(2025, 8, 24, 18, 12, 53, 596, DateTimeKind.Local).AddTicks(9609), new DateTime(2025, 8, 21, 9, 12, 53, 596, DateTimeKind.Local).AddTicks(9608), true, false, 3, "Consulta especializada", 3 }
+                    { 1, 1, 30.00m, new DateTime(2025, 8, 22, 19, 24, 56, 836, DateTimeKind.Local).AddTicks(9837), new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(9832), true, false, 1, "Consulta general", 1 },
+                    { 2, 1, 45.50m, new DateTime(2025, 8, 24, 0, 24, 56, 836, DateTimeKind.Local).AddTicks(9848), new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(9847), true, false, 2, "Revisión de análisis clínicos", 2 },
+                    { 3, 2, 60.00m, new DateTime(2025, 8, 24, 18, 24, 56, 836, DateTimeKind.Local).AddTicks(9852), new DateTime(2025, 8, 21, 9, 24, 56, 836, DateTimeKind.Local).AddTicks(9850), true, false, 3, "Consulta especializada", 3 }
                 });
 
             migrationBuilder.CreateIndex(

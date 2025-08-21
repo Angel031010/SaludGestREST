@@ -28,7 +28,7 @@ namespace SaludGestREST.Services.Services.Implementations
                 .Where(e => e.IsActive == true)
                 .Select(e => new EspecialidadReadDTO
                 {
-                    IdEspecialidad = e.Id,
+                    IdEspecialidad = e.EspecialidadId,
                     Nombre = e.Nombre,
                     Descripcion = e.Descripcion,
                     IsActive = e.IsActive,
@@ -54,10 +54,10 @@ namespace SaludGestREST.Services.Services.Implementations
         public async Task<EspecialidadReadDTO> GetByIdAsync(int id)
         {
             var especialidad = await _context.Especialidades
-                .Where(e => e.Id == id)
+                .Where(e => e.EspecialidadId== id)
                 .Select(e => new EspecialidadReadDTO
                 {
-                    IdEspecialidad = e.Id,
+                    IdEspecialidad = e.EspecialidadId,
                     Nombre = e.Nombre,
                     Descripcion = e.Descripcion,
                     IsActive = e.IsActive,
