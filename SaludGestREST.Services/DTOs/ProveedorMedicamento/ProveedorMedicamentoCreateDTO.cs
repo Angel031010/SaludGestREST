@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SaludGestREST.Services.DTOs.ProveedorMedicamento
+{
+    public class ProveedorMedicamentoCreateDTO:RegistryDTO
+    {
+        public int ProveedorMedicamentoId { get; set; }
+        [Display(Name = "Nombre")]
+        [Required(ErrorMessage = "El valor es requerido")]
+        public string Nombre { get; set; }
+        [Display(Name = "Telefono")]
+        [Required(ErrorMessage = "El valor es requerido")]
+        public string Telefono { get; set; }
+        [Display (Name = "Email")]
+        [Required(ErrorMessage = "El valor es requerido")]
+        public string Email { get; set; }
+        [Display(Name = "Direccion")]
+        [Required(ErrorMessage = "El valor es requerido")]
+        public string Direccion { get; set; }
+    }
+}
