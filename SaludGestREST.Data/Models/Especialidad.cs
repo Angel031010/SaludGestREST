@@ -9,8 +9,7 @@ namespace SaludGestREST.Data.Models
 {
     public class Especialidad : Registry
     {
-        [Key]
-        public int IdEspecialidad { get; set; }
+        public int EspecialidadId { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
 
