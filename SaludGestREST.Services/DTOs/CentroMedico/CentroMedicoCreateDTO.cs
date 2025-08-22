@@ -10,6 +10,7 @@ namespace SaludGestREST.Services.DTOs.CentroMedico
 {
     public class CentroMedicoCreateDTO : RegistryDTO
     {
+        public int? CentroMedicoId { get; set; }
 
         [Required(ErrorMessage = "El nombre es requerido")]
         public string Nombre { get; set; }

@@ -12,9 +12,13 @@ namespace SaludGestREST.Services.DTOs.Cita
 
         public int PacienteId { get; set; }
         public string PacienteNombre { get; set; }
+        public string ApellidoPaternoPaciente { get; set; }
+        public string ApellidoMaternoPaciente { get; set; }
 
         public int MedicoId { get; set; }
         public string MedicoNombre { get; set; }
+        public string ApellidoPaternoMedico { get; set; }
+        public string ApellidoMaternoMedico{ get; set; }
 
         public int CentroMedicoId { get; set; }
         public string CentroMedicoNombre { get; set; }

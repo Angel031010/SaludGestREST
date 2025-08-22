@@ -47,6 +47,7 @@ namespace SaludGestREST.Services.Services.Implementations
 
             await _context.CentrosMedicos.AddAsync(centroMedico);
             await _context.SaveChangesAsync();
+            dto.CentroMedicoId = centroMedico.CentroMedicoId;
             //En caso de que falle el guardado, añadir linea como brandCreateDTO.Id = brand.Id;
         }
 
